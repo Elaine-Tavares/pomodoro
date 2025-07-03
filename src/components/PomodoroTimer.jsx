@@ -87,11 +87,15 @@ const PomodoroTimer = () => {
   const estilos = {
   container: {
     backgroundColor: "#FFFDE7", // fundo amarelo bebê
-    minHeight: "100vh",
-    padding: "40px",
+    minHeight: "70vh",
+    paddingTop: "40px",
     textAlign: "center",
     fontFamily: "Arial, sans-serif",
     color: "#333",
+    // border: "2px solid red",
+    // display: "flex",
+    // justifyContent: "center",
+    // alignItems: "center",
   },
   timer: {
     fontSize: "64px",
@@ -104,7 +108,7 @@ const PomodoroTimer = () => {
     border: "1px solid #ccc",
     borderRadius: "8px",
     marginRight: "10px",
-    textAlign: "Center"
+    textAlign: "center"
   },
   iniciar: {
     backgroundColor: "#FDD835",
@@ -149,7 +153,6 @@ const PomodoroTimer = () => {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    // border: "2px solid red",
     marginTop: "20px"
   }
 };
