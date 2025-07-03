@@ -1,0 +1,22 @@
+.footer {
+  background-color: rgba(200, 60, 85, 1); /* Rosa mais forte */
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
