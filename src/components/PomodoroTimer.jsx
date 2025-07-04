@@ -109,7 +109,8 @@ const PomodoroTimer = () => {
     border: "1px solid #ccc",
     borderRadius: "8px",
     marginRight: "10px",
-    textAlign: "center"
+    textAlign: "center",
+    marginTop: "30px"
   },
   iniciar: {
     backgroundColor: "#FDD835",
@@ -148,7 +149,7 @@ const PomodoroTimer = () => {
   },
   label: {
     marginRight: "20px",
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   botoes: {
     display: "flex",
