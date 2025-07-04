@@ -4,8 +4,9 @@ import { useEffect, useState, useRef  } from "react";
 
 //Alarme quando zerar a contagem regressiva zerar
 import alarmSound from "../assets/alarme.mp3";
-import Footer from "./Footer";
 
+import imagemFoco from '../assets/foco.jpg';
+import imagemDescanco from '../assets/descanso.jpg'
 
 const PomodoroTimer = () => {
     const [minutes, setMinutes] = useState(0);
@@ -35,7 +36,7 @@ const PomodoroTimer = () => {
     //ativa ou desativa o pomodoro 
     const toggleTimer = () => { 
         setIsActive(!isActive)
-        if(userTime > 5){
+        if(userTime > 15){
             setMsgModo("Foco")
         } else {
             setMsgModo("Descanso")
@@ -75,6 +76,7 @@ const PomodoroTimer = () => {
           setTimeout(() => {
             setMsgTempoFinalizado(""); // Limpa a mensagem
           }, 13000); // 13 segundos
+          
         }
       }, 1000); // Executa a cada 1000ms = 1s
     }
@@ -87,15 +89,14 @@ const PomodoroTimer = () => {
   const estilos = {
   container: {
     backgroundColor: "#FFFDE7", // fundo amarelo bebê
-    minHeight: "70vh",
+    minHeight: "100vh",
     paddingTop: "40px",
     textAlign: "center",
     fontFamily: "Arial, sans-serif",
     color: "#333",
-    // border: "2px solid red",
-    // display: "flex",
-    // justifyContent: "center",
-    // alignItems: "center",
+  },
+  h1: {
+    fontSize: "3rem"
   },
   timer: {
     fontSize: "64px",
@@ -154,26 +155,48 @@ const PomodoroTimer = () => {
     justifyContent: "center",
     alignItems: "center",
     marginTop: "20px"
+  },
+  p: {
+    textAlign: "left",
+    marginLeft: "50px",
+    fontWeight: "bold"
   }
 };
 
 
   return (
-    <div style={estilos.container}>
+    <div 
+      style={{...estilos.container,
+      backgroundImage: `url(${msgModo === "Foco" ? imagemFoco : imagemDescanco})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center"
+    }}>
       <audio ref={audioRef} src={alarmSound} preload="auto" />
-      <h1>Pomodoro</h1>
+      <h1 style={{...estilos.h1, color: msgModo === "Foco" ? "green" : "black"}}>Pomodoro</h1>
       {msgModo && (
-        <h2>Modo: {msgModo}</h2>
-      ) }
+        <h2 style={{ color: msgModo === "Foco" ? "green" : "black" }}>Modo: {msgModo}</h2>
+      )}
+        <p 
+          style={{...estilos.p, 
+          color: msgModo === "Foco" ? "white" : "black" }}>
+          Modo descanso, até 15 min!
+        </p>
         {msgTempoFinalizado && (
             <p style={estilos.mensagem}>{msgTempoFinalizado}</p>
         )} <br />
-        <div style={estilos.timer}>
+        <div 
+          style={{...estilos.timer,
+          color: msgModo === "Foco" ? "green" : "black"
+        }}>
              {/* Abaixo formatação dos minutos e segundos para ficarem com um zero a esquerda quando tiver apenas um número. Ex: 08:02 */}
             {String(minutes).padStart(2, "0")} : {String(seconds).padStart(2, "0")}
         </div>
       <div>
-        <label style={estilos.label}>Definir Tempo (minutos)</label>
+        <label 
+          style={{...estilos.label, 
+          color: msgModo === "Foco" ? "green" : "black"}} 
+          >Definir Tempo (minutos)
+        </label>
         <input 
             type="number" 
             min="1"
