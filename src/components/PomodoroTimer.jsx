@@ -159,7 +159,9 @@ const PomodoroTimer = () => {
   p: {
     textAlign: "left",
     marginLeft: "50px",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    marginTop: "30px",
+    fontSize: "22px"
   }
 };
 
@@ -177,8 +179,10 @@ const PomodoroTimer = () => {
         <h2 style={{ color: msgModo === "Foco" ? "green" : "black" }}>Modo: {msgModo}</h2>
       )}
         <p 
-          style={{...estilos.p, 
-          color: msgModo === "Foco" ? "white" : "black" }}>
+          style={{...estilos.p,
+          ...(msgModo === "Foco"
+          ? { color: "white", textShadow: "2px 2px 8px #000" }
+          : { color: "black", textShadow: "none" }) }}>
           Modo descanso, até 15 min!
         </p>
         {msgTempoFinalizado && (
