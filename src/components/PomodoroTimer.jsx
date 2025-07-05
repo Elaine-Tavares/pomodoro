@@ -6,7 +6,8 @@ import { useEffect, useState, useRef  } from "react";
 import alarmSound from "../assets/alarme.mp3";
 
 import imagemFoco from '../assets/foco.jpg';
-import imagemDescanco from '../assets/descanso.jpg'
+import imagemDescanco from '../assets/descanso.jpg';
+import imagemInicio from '../assets/inicio.jpg'
 
 const PomodoroTimer = () => {
     const [minutes, setMinutes] = useState(0);
@@ -95,6 +96,7 @@ const PomodoroTimer = () => {
     fontFamily: "Arial, sans-serif",
     color: "#333",
   },
+
   h1: {
     fontSize: "3rem"
   },
@@ -162,28 +164,26 @@ const PomodoroTimer = () => {
     marginLeft: "50px",
     fontWeight: "bold",
     marginTop: "30px",
-    fontSize: "22px"
-  }
+    fontSize: "22px",
+    color: "white", textShadow: "2px 2px 8px #000"
+  },
 };
 
 
   return (
-    <div 
+    <div
       style={{...estilos.container,
-      backgroundImage: `url(${msgModo === "Foco" ? imagemFoco : imagemDescanco})`,
+      backgroundImage: `url(${msgModo === "Foco" ? imagemFoco : msgModo === "Descanso" ? imagemDescanco :imagemInicio })`,
       backgroundSize: "cover",
       backgroundPosition: "center"
     }}>
       <audio ref={audioRef} src={alarmSound} preload="auto" />
-      <h1 style={{...estilos.h1, color: msgModo === "Foco" ? "green" : "black"}}>Pomodoro</h1>
+      <h1 style={{...estilos.h1, color: msgModo === "Foco" ? "green" : "white"}}>Pomodoro</h1>
       {msgModo && (
-        <h2 style={{ color: msgModo === "Foco" ? "green" : "black" }}>Modo: {msgModo}</h2>
+        <h2 style={{ color: msgModo === "Foco" ? "green" : "white" }}>Modo: {msgModo}</h2>
       )}
         <p 
-          style={{...estilos.p,
-          ...(msgModo === "Foco"
-          ? { color: "white", textShadow: "2px 2px 8px #000" }
-          : { color: "black", textShadow: "none" }) }}>
+          style={estilos.p}>
           Definir modo descanso, até 15 min!
         </p>
         {msgTempoFinalizado && (
