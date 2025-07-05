@@ -184,7 +184,7 @@ const PomodoroTimer = () => {
           ...(msgModo === "Foco"
           ? { color: "white", textShadow: "2px 2px 8px #000" }
           : { color: "black", textShadow: "none" }) }}>
-          Modo descanso, até 15 min!
+          Definir modo descanso, até 15 min!
         </p>
         {msgTempoFinalizado && (
             <p style={estilos.mensagem}>{msgTempoFinalizado}</p>
